@@ -14,13 +14,10 @@ export class AuthuserGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-      //  if(this.loginService.tokenValidation(this.loginService.getToken())) {
-      //   return true;
-      //  }
-
-     if(this.loginService.failTokenValidation()) {
-        return true;
+       if(this.loginService.tokenValidation(this.loginService.getToken())) {
+         return true;
        }
-        return this.router.parseUrl('/login');
+
+       return this.router.parseUrl('/login');
   }  
 }

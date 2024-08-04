@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  saveLogginForm(){
+  saveLogginForm(){  
      const userCredentials: UserLoginDtoInput = {
        email: this.forms.value.username,
        password: this.forms.value.pass

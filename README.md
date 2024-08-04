@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
  - Worldwide tasks visualization with map and table locations.
  - Use the following static credentials
      email: 'carlosuerbagt@gmail.com',
-     password: 'youshouldhireme'
+     password: 'youshouldcallme'
 
 
 ## Development server
