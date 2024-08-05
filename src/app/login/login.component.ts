@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
       tap((res: UserLoginLocalDto) =>{      
            
           if(res && res.expires_in > 0){         
-                    this.router.navigateByUrl('/task_map_angular/tasks');
+                    this.router.navigateByUrl('/tasks');
                    }else{
                      this.wrongLogin();
                    }  
@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
   //   .pipe(
   //     tap((res: UserLoginDtoOutput) =>{
   //        if(res && res.expires_in > 0){
-  //         this.router.navigateByUrl('/task_map_angular/tasks');
+  //         this.router.navigateByUrl('/tasks');
   //        }else{
   //          this.wrongLogin();
   //        }       
@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
   checkForActiveUser(){    
     const token = this.loginService.getToken();
      if(this.loginService.tokenValidation(token)){
-      this.router.navigateByUrl('/task_map_angular/tasks');
+      this.router.navigateByUrl('/tasks');
      }   
   }
 

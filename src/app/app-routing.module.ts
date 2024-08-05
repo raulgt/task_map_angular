@@ -10,9 +10,9 @@ import { AuthuserGuard } from './guards/authuser.guard';
 
 const routes: Routes = [
   
-  { path: 'task_map_angular/tasks', component: TasksmapComponent, resolve:{userDetail: UserResolver}, canActivate: [AuthuserGuard]},
-  { path: 'task_map_angular/login', component: LoginComponent },
-  { path: ''   , redirectTo:'/task_map_angular/login', pathMatch: 'full'},
+  { path: 'tasks', component: TasksmapComponent, resolve:{userDetail: UserResolver}, canActivate: [AuthuserGuard]},
+  { path: 'login', component: LoginComponent },
+  { path: ''   , redirectTo:'/login', pathMatch: 'full'},
   { path: '**', component: NopagefoundComponent }
 ];
 
