@@ -43,7 +43,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   providers: [  
     {provide: HTTP_INTERCEPTORS, useClass: HttpAuthBearerInterceptor, multi: true},
     UserResolver,
-      {provide: APP_BASE_HREF, useValue: '#/task_map_angular'}
+      // {provide: APP_BASE_HREF, useValue: '#/task_map_angular/'}
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
