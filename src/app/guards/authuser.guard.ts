@@ -18,6 +18,6 @@ export class AuthuserGuard implements CanActivate {
          return true;
        }
 
-       return this.router.parseUrl('/login');
+       return this.router.parseUrl('/task_map_angular/login');
   }  
 }

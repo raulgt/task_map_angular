@@ -95,7 +95,7 @@ export class LoginServiceService {
   logout() {
     localStorage.removeItem('token');
     this.ngZone.run(() => {
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/task_map_angular/login');
     });
   }
 
