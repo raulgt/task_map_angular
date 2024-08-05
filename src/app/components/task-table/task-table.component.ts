@@ -28,7 +28,7 @@ export class TaskTableComponent implements OnInit, OnChanges {
   constructor(private eventService: EventServiceService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.jobList && changes["jobList"].currentValue) {
+    if (this.jobList && changes["jobList"].currentValue) {    
       this.showTaskData(changes["jobList"].currentValue);
     }
   }

@@ -27,8 +27,8 @@ export class TasksmapComponent implements OnInit {
   retriveJobData(){
     this.jobService.getJobs()
     .pipe(
-      tap((res: JobsDtoOut) => {         
-       this.jobList = res.data;
+      tap((res: JobsDtoOut) => {                
+       this.jobList = res.data;   
     })
     ).subscribe();
   }

@@ -1,13 +1,12 @@
 import {
   AfterViewInit,
   Component,
-  EventEmitter,
   Input,
   OnChanges,
   OnInit,
-  Output,
   SimpleChanges,
   ViewChild,
+  ElementRef
 } from '@angular/core';
 import { GoogleMaps } from 'src/app/clases/googleMaps';
 import { EventServiceService } from 'src/app/services/event-service.service';
@@ -36,35 +35,44 @@ export class LocationMapComponent
   //outputs
 
   // Global properties for google map
-  @ViewChild('map') mapElement: any;
-  map: any;
+  @ViewChild('mapElement') public mapElement: ElementRef;
+  public map: any;
+  private isViewInitialized = false;
+  public lngLatGlobal: LongLat;
 
   constructor(private eventService: EventServiceService) {
     super();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (this.jobList && changes['jobList'].currentValue) {
-      const lngLat: LongLat = {
-        lat: Number(this.jobList[0].latitude),
-        lng: Number(this.jobList[0].longitude),
-      };
-      // initialization of Map
-      this.initLocalMap(lngLat);
-      // set the array of markers
-      this.jobList.map((mark: JobDetailDtoOutput) => {
-        this.addLocalMarker(this.prepareLocalMarker(mark));
-      });
+  ngAfterViewInit(): void {   
+   if(this.isViewInitialized){
+        const lngLat: LongLat = {
+          lat: Number(this.jobList[0].latitude),
+          lng: Number(this.jobList[0].longitude),
+        };
+        
+        // initialization of Map
+        this.initLocalMap(lngLat);
+
+        this.subscribeTableRowClickEventFromTaskTable();
+        // set the array of markers
+        this.jobList.map((mark: JobDetailDtoOutput) => {
+          this.addLocalMarker(this.prepareLocalMarker(mark));
+        });
+   }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {  
+    if (this.jobList && changes['jobList'].currentValue) {             
+      this.isViewInitialized = true;
     }
   }
 
-  ngOnInit(): void {
-    this.subscribeTableRowClickEventFromTaskTable();
-  }
+  ngOnInit(): void {}
 
-  ngAfterViewInit(): void {}
 
-  initLocalMap(lngLat: LongLat) {
+
+  initLocalMap(lngLat: LongLat) {  
     this.map = this.initMap(
       this.mapElement.nativeElement,
       { lat: lngLat.lat, lng: lngLat.lng },

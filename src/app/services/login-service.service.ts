@@ -116,9 +116,7 @@ export class LoginServiceService {
 
   private getMockJwtoken(){
     const payload = { name: 'Carlos Abreu', email: 'carlosuerbagt@gmail.com', exp: Math.floor(Date.now() / 1000) + (60 * 60) };   
-    const token = createMockJWT(payload);
-    console.log('createMockJWT-token: ', token);
-
+    const token = createMockJWT(payload);  
     return token;
   }
 

@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 const base_url = environment.base_url;
-const _jsonURL = '../../assets/dbmock.json';
+ const _jsonURL = '../../assets/dbmock.json';
+import mockDb from '../common-constants/mock-db';
 
 
 @Injectable({
@@ -18,16 +19,16 @@ export class JobLocationService {
   }
 
   public getJSON(): Observable<any> {
-    return this.http.get(_jsonURL);
+    return this.http.get(JSON.stringify(mockDb));
   }
 
   getJobs(): Observable<JobsDtoOut> {
-    return this.http.get<JobsDtoOut>(`${_jsonURL}`).pipe(
-      map((res: JobsDtoOut) => {
-        return res;
-      }),
-      catchError(this.handleError<any>('getJobs'))
-    );
+  return of(mockDb).pipe(
+    map((res: JobsDtoOut) => {      
+      return res;
+    }),
+    catchError(this.handleError<any>('getJobs'))
+  );   
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
