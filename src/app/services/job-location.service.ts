@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 const base_url = environment.base_url;
- const _jsonURL = '../../assets/dbmock.json';
 import mockDb from '../common-constants/mock-db';
 
 
